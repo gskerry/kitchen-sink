@@ -68,7 +68,7 @@ const HEROES: Hero[] = [
         margin-right: .8em;
         border-radius: 4px 0 0 4px;
       }
-    `]
+    `],
     template:`
         <h1>{{title}}</h1>
         <h2>My Heroes</h2>
@@ -85,7 +85,7 @@ const HEROES: Hero[] = [
                 <input [(ngModel)]="selectedHero.name" placeholder="name">
             </div>
         </div>
-    `,
+    `
 })
 
 export class AppComponent  { 
