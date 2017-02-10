@@ -75,6 +75,7 @@ const HEROES: Hero[] = [
                 <span class="badge">{{hero.id}}</span> {{hero.name}}
             </li>
         </ul>
+        <my-hero-detail></my-hero-detail>
     `
 })
 
