@@ -65,7 +65,6 @@ import { HeroService } from './hero.service'
         </ul>
         <my-hero-detail [hero]="selectedHero"></my-hero-detail>
     `,
-    providers: [HeroService]
 })
 
 export class HeroesComponent implements OnInit { 
