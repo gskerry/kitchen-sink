@@ -1,8 +1,12 @@
 import { Injectable } from '@angular/core';
+import { Hero } from './hero';
+import { HEROES } from './mock-mock-heroes';
 
 @Injectable()
 export class HeroService{
 
-    getHeroes(): void {}
+    getHeroes(): Hero[] {
+        return HEROES;
+    }
 
 }
