@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { OnInit } from '@angular/core';
 import { Hero } from './hero'; 
 import { HeroService } from './hero.service'
 
@@ -68,14 +69,20 @@ heroes: Hero[];
             </li>
         </ul>
         <my-hero-detail [hero]="selectedHero"></my-hero-detail>
-    `
+    `,
+    providers: [HeroService]
 })
 
-export class AppComponent  { 
+export class AppComponent implements OnInit { 
     title = 'Tour of Heroes';
     heroes = HEROES;
     selectedHero;
     onSelect(hero: Hero): void {
         this.selectedHero = hero; 
+    };
+    ngOnInit() : void {
+    }
+    getHeroes(): void {
+        this.heroes = this.heroService.getHeroes(); 
     }
 }
