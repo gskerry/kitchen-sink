@@ -3,8 +3,6 @@ import { OnInit } from '@angular/core';
 import { Hero } from './hero'; 
 import { HeroService } from './hero.service'
 
-heroes: Hero[];
-
 @Component({
     selector: 'my-app',
     styles: [`
@@ -73,7 +71,7 @@ heroes: Hero[];
 
 export class AppComponent implements OnInit { 
     title = 'Tour of Heroes';
-    heroes = HEROES;
+    heroes = Hero[];
     selectedHero;
     constructor(private heroService: HeroService) { };
     onSelect(hero: Hero): void {
