@@ -11,7 +11,7 @@ import { HeroService } from './hero.service'
 @NgModule({
     imports: [ 
         BrowserModule,
-        FormsModule
+        FormsModule,
         RouterModule.forRoot([
             {
                 path: 'heroes',
