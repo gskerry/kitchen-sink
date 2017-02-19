@@ -63,7 +63,13 @@ import { HeroService } from './hero.service'
                 <span class="badge">{{hero.id}}</span> {{hero.name}}
             </li>
         </ul>
-        <my-hero-detail [hero]="selectedHero"></my-hero-detail>
+        <!-- <my-hero-detail [hero]="selectedHero"></my-hero-detail> -->
+        <div *ngIf="selectedHero">
+            <h2>
+                {{selectedHero.name | uppercase }} is my hero
+            </h2>
+            <button (click)="gotoDetail()">View Details</button>
+        </div>
     `,
 })
 
