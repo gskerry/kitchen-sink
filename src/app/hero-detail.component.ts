@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
-import { Location } from '@angular/common';
+import { ActivatedRoute, Params } from '@angular/router'; // exposes current url params
+import { Location } from '@angular/common'; // exposes browser's url and history
 
 import 'rxjs/add/operator/switchMap';
 
@@ -19,6 +19,7 @@ import { HeroService } from './hero.service';
                 <input [(ngModel)]="hero.name" placeholder="name">
             </div>
         </div>
+        <button (click)="goBack()">Back</button>
     `
 })
 
@@ -38,6 +39,10 @@ export class HeroDetailComponent implements OnInit {
         this.route.params
             .switchMap((params: Params) => this.heroService.getHero(+params['id']))
             .subscribe(hero => this.hero = hero);
+    }
+
+    goBack(): void {
+        this.location.back();
     }
 
 }
