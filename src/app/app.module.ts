@@ -29,15 +29,15 @@ import { HeroService } from './hero.service'
             },
             {
                 path: 'detail/:id',
-                component: HeroeDetailComponent
+                component: HeroDetailComponent
             }
         ])
     ],
     declarations: [ 
         AppComponent,
         DashboardComponent,
-        HeroDetailComponent,
-        HeroesComponent
+        HeroesComponent,
+        HeroDetailComponent
     ],
     providers: [ HeroService ],
     bootstrap:    [ AppComponent ]
