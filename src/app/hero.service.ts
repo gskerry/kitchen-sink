@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Headers, Http } from '@angular/http';
 
-import 'rxjs/add/operator/toPromise';
+import 'rxjs/add/operator/toPromise'; // http.get Observable no native toPromise conversion
 
 import { Hero } from './hero';
 
 @Injectable()
-export class HeroServicei {
+export class HeroService {
     
     private heroesUrl = 'api/heroes';
 
@@ -14,8 +14,8 @@ export class HeroServicei {
 
     getHeroes(): Promise<Hero[]> {
         return this.http.get(this.heroesUrl)
-            .toPromise()
-            .then(response => resposne.json().data as Hero[])
+            .toPromise() // execute rxjs promise-converter
+            .then(response => response.json().data as Hero[]) // native http resp
     }
     
     getHero(id: number): Promise<Hero> {
