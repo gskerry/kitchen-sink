@@ -8,7 +8,7 @@ import { Hero } from './hero';
 @Injectable()
 export class HeroService {
     
-    private heroesUrl = 'api/heroes';
+    private heroesUrl = 'api/heroes'; // (!) hardcoded to Angular's web-api 
 
     constructor(private http: Http){}
 
@@ -16,11 +16,15 @@ export class HeroService {
         return this.http.get(this.heroesUrl)
             .toPromise() // execute rxjs promise-converter
             .then(response => response.json().data as Hero[]) // native http resp
+            .catch(this.handleError);
     }
     
     getHero(id: number): Promise<Hero> {
-        return this.getHeroes()
-            .then(heroes => heroes.find(hero => hero.id === id));
+        const url =`${this.heroesUrl}/${id}`;
+        return this.http.get(url)
+            .toPromise()
+            .then(response => response.json().data as Hero)
+            .catch(this.handleError)
     }
 
     private handleError(error: any): Promise<any> {
