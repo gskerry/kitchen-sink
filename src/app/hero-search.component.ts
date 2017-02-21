@@ -47,11 +47,11 @@ export class HeroSearchComponent implements OnInit {
                 ? this.heroSearchService.search(term) // return http search obsv
                 : Observable.of<Hero[]>([]) // empty obsv if no search term
             )
-            .catch(
+            .catch (error => {
                 // Handler
                 console.log(error);
                 return Observable.of<Hero[]>([])
-            );
+            });
     }
 
     gotoDetail(hero: Hero): void {
