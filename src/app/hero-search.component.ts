@@ -42,10 +42,12 @@ export class HeroSearchComponent implements OnInit {
         this.heroes = this.searchTerms
             .debounceTime(300) // pause each keystroke
             .distinctUntilChanged() // ignore if same as previous
-            .switchMap(
+            .switchMap( // preserves req order - but returns only most recent active req
                 term => term // new obsv each time term changes
                 ? this.heroSearchService.search(term) // return http search obsv
                 : Observable.of<Hero[]>([]) // empty obsv if no search term
+                // N.B. not actually aborting prior pending http calls. Just discarding results.
+                // TODO: managing http traffic.
             )
             .catch (error => {
                 // Handler
