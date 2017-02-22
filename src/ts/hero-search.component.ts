@@ -18,8 +18,8 @@ import { Hero } from './hero';
 @Component({
     moduleId: module.id,
     selector: 'hero-search',
-    templateUrl: './UI/hero-search.component.html',
-    styleUrls: ['./UI/hero-search.component.css'],
+    templateUrl: '../UI/hero-search.component.html',
+    styleUrls: ['../UI/hero-search.component.css'],
     providers: [HeroSearchService]
 })
 

@@ -11,8 +11,8 @@ import { HeroService } from './hero.service';
 @Component({
     moduleId: module.id,
     selector: 'my-hero-detail',
-    templateUrl: './UI/hero-detail.component.html',
-    styleUrls: ['./UI/hero-detail.component.css']
+    templateUrl: '../UI/hero-detail.component.html',
+    styleUrls: ['../UI/hero-detail.component.css']
 })
 
 

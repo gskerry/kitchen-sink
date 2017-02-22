@@ -11,7 +11,8 @@
     // map tells the System loader where to look for things
     map: {
       // our app is within the app folder
-      app: 'dist',
+      app: 'js', // 'app' is key(word). Though dir renamed 'ts', leave as app here.
+                // tsconfig is handling populating the ts compiles to './js'. So as long as 'js' defined as dir here - all good.
 
       // angular bundles
       '@angular/core': 'npm:@angular/core/bundles/core.umd.js',
