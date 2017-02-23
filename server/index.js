@@ -1,3 +1,4 @@
+'use strict'
 const express = require('express')
 const Promise = require("bluebird");
 
@@ -6,7 +7,11 @@ let readFile_prom = Promise.promisify(require("fs").readFile);
 let app = express()
 
 app.get('/', function (req, res) {
-    res.send('hello world');
+    
+    readFile_prom('./data.json')
+        .then(data => res.send(data))
+        // res.send('hello world');
+
 });
 
 var startServer = function () {
