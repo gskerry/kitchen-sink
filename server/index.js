@@ -9,9 +9,14 @@ let here = path.join(__dirname, './')
 
 app.get('/', function (req, res) {
     
-    readFile_prom(here+'data.json')
+    readFile_prom(here+'data.json') //, 'utf-8'
         .then(function(data){
-            let msg = data.toString('utf8')
+            console.log(typeof data);
+            // let msg = JSON.stringify(data)
+            let content = data.toString('utf-8');
+            console.log(typeof content);
+            let msg = JSON.parse(content)
+            console.log(typeof msg);
             res.json(msg)
         });
         // res.send('hello world');
