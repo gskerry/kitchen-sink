@@ -1,6 +1,9 @@
 const express = require('express')
+const Promise = require("bluebird");
 
-var app = express()
+let readFile_prom = Promise.promisify(require("fs").readFile);
+
+let app = express()
 
 app.get('/', function (req, res) {
     res.send('hello world');
