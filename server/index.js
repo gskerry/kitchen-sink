@@ -10,7 +10,10 @@ let here = path.join(__dirname, './')
 app.get('/', function (req, res) {
     
     readFile_prom(here+'data.json')
-        .then(data => res.json(data))
+        .then(function(data){
+            let msg = data.toString('utf8')
+            res.json(msg)
+        });
         // res.send('hello world');
 
 });
