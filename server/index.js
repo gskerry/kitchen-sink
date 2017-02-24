@@ -11,13 +11,19 @@ app.get('/', function (req, res) {
     
     readFile_prom(here+'data.json') //, 'utf-8'
         .then(function(data){
-            console.log(typeof data);
+            // console.log(typeof data);
             // let msg = JSON.stringify(data)
             let content = data.toString('utf-8');
-            console.log(typeof content);
-            let msg = JSON.parse(content)
-            console.log(typeof msg);
-            res.json(msg)
+            // console.log(typeof content);
+            let array = JSON.parse(content)
+            // console.log(typeof array);
+            let query = array.find(function(obj){
+                return obj.id === 1;
+            })
+            // res.json(array)
+            console.log(query);
+            res.json(query)
+            // res.send(msg[0].msg);
         });
         // res.send('hello world');
 
