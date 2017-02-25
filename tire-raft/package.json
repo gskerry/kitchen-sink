@@ -1,0 +1,12 @@
+{
+  "name": "express-flat-db",
+  "version": "1.0.0",
+  "description": "barebones query-able API reading from flat file",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server/index.js"
+  },
+  "author": "gskerry",
+  "license": "ISC"
+}
