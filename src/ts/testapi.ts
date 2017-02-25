@@ -7,7 +7,8 @@ import { Hero } from './hero';
     moduleId: module.id,
     selector: 'my-testapi',
     // template: '<p>hello api.</p>',
-    templateUrl: '../UI/dashboard.component.html'
+    templateUrl: '../UI/dashboard.component.html',
+    styleUrls: ['../UI/dashboard.component.css']
 })
 
 export class testApi implements OnInit { 
