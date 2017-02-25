@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Headers, Http } from '@angular/http
+import { Headers, Http } from '@angular/http';
 import 'rxjs/add/operator/toPromise'; // http.get Observable no native toPromise conversion
 import { Hero } from './hero';
 
@@ -20,17 +20,21 @@ export class testApi implements OnInit {
     getHeroes(): Promise<Hero[]> { 
         return this.http.get(this.myheroesUrl) 
             .toPromise() // execute rxjs promise-converter
-            .then(response => console.log(response.json().data))
-            // .then(response => response.json().data as Hero[]) // native http resp
+            // .then(response => console.log(response.json()))
+            .then(response => response.json() as Hero[]) // native http resp
             .catch(this.handleError);
     }
 
     ngOnInit(): void {
         this.getHeroes()
-            .then(function(heroes){ 
-                console.log(heroes);
-                // this.heroes = heroes.slice(1,5)
+            .then(function(heroesdata){ 
+                console.log(heroesdata);
+                this.heroes = heroesdata
             });
     }
 
+    private handleError(error: any): Promise<any> {
+        console.error('An error occured', error);
+        return Promise.reject(error.message || error);
+    }
 }

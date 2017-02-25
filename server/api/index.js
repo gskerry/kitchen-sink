@@ -19,9 +19,9 @@ router.get('/myheroes', function (req, res) {
             let query = array.find(function(obj){
                 return obj.id === 1;
             })
-            // res.json(array)
-            console.log(query);
-            res.json(query)
+            res.json(array)
+            console.log(JSON.stringify(query)+' | '+typeof query);
+            // res.json(query)
             // res.send(msg[0].msg);
         });
         // res.send('hello world');
