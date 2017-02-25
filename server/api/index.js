@@ -6,7 +6,7 @@ const path = require('path');
 let readFile_prom = Promise.promisify(require("fs").readFile);
 let here = path.join(__dirname, './')
 
-router.get('/', function (req, res) {
+router.get('/myheroes', function (req, res) {
     
     readFile_prom(here+'data.json') //, 'utf-8'
         .then(function(data){

@@ -9,12 +9,13 @@ import { Hero } from './hero';
 export class HeroService {
     
     private heroesUrl = 'api/heroes'; // (!) hardcoded to Angular's web-api 
+    private myheroesUrl = 'api/myheroes'; // refactor for express API 
     private headers = new Headers({'Content-Type':'application/json'})
 
     constructor(private http: Http){}
 
     getHeroes(): Promise<Hero[]> {
-        return this.http.get(this.heroesUrl)
+        return this.http.get(this.myheroesUrl)
             .toPromise() // execute rxjs promise-converter
             .then(response => response.json().data as Hero[]) // native http resp
             .catch(this.handleError);
