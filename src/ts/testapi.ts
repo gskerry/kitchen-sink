@@ -6,7 +6,8 @@ import { Hero } from './hero';
 @Component({
     moduleId: module.id,
     selector: 'my-testapi',
-    template: '<p>hello api.</p>',
+    // template: '<p>hello api.</p>',
+    templateUrl: '../UI/dashboard.component.html'
 })
 
 export class testApi implements OnInit { 
@@ -27,9 +28,9 @@ export class testApi implements OnInit {
 
     ngOnInit(): void {
         this.getHeroes()
-            .then(function(heroesdata){ 
+            .then(heroesdata => { 
                 console.log(heroesdata);
-                this.heroes = heroesdata
+                return this.heroes = heroesdata
             });
     }
 
