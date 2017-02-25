@@ -15,6 +15,12 @@ app.use(bodyParser.json())
 let root = path.join(__dirname, '../');
 let rootHtml = path.join(root, 'src/index.html');
 
+var browserPath = path.join(root, './src');
+app.use(express.static(browserPath));
+
+var modulesPath = path.join(root, './node_modules');
+app.use('/node_modules', express.static(modulesPath));
+
 app.get('/', function (req, res) {
     res.sendFile(rootHtml);
 });
