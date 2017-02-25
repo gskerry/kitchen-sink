@@ -10,6 +10,17 @@ router.get('/myheroes', function (req, res) {
     
     readFile_prom(here+'data.json') //, 'utf-8'
         .then(function(data){
+            let content = data.toString('utf-8');
+            let array = JSON.parse(content)
+            res.json(array)
+        });
+
+});
+
+router.get('/myheroes/:id', function (req, res) {
+    
+    readFile_prom(here+'data.json') //, 'utf-8'
+        .then(function(data){
             // console.log(typeof data);
             // let msg = JSON.stringify(data)
             let content = data.toString('utf-8');
@@ -19,12 +30,13 @@ router.get('/myheroes', function (req, res) {
             let query = array.find(function(obj){
                 return obj.id === 1;
             })
-            res.json(array)
-            console.log(JSON.stringify(query)+' | '+typeof query);
+            // res.json(array)
+            // console.log(JSON.stringify(query)+' | '+typeof query);
             // res.json(query)
             // res.send(msg[0].msg);
+            console.log(req.params.id);
+            res.send('hello world');
         });
-        // res.send('hello world');
 
 });
 
