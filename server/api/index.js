@@ -23,6 +23,7 @@ router.get('/myheroes/:id', function (req, res) {
         .then(function(data){
             console.log(req.params.id);
             console.log(typeof req.params.id);
+            let numid = Number(req.params.id)
             // console.log(typeof data);
             // let msg = JSON.stringify(data)
             let content = data.toString('utf-8');
@@ -32,7 +33,7 @@ router.get('/myheroes/:id', function (req, res) {
             // console.log(typeof array);
             let query = array.find(function(obj){
                 console.log(typeof obj.id);
-                return obj.id === req.params.id;
+                return obj.id === numid;
             })
             console.log(query);
             console.log(JSON.stringify(query)+' | '+typeof query);
