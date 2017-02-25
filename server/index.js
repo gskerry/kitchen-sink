@@ -21,6 +21,8 @@ app.use(express.static(browserPath));
 var modulesPath = path.join(root, './node_modules');
 app.use('/node_modules', express.static(modulesPath));
 
+app.use('/api', require('./api'));
+
 app.get('/', function (req, res) {
     res.sendFile(rootHtml);
 });
