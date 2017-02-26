@@ -61,6 +61,31 @@ router.post('/myheroes', function (req, res) {
         });
 });
 
+router.put('/myheroes/:id', function (req, res) {
+    readFile_prom(here+'data.json')
+        .then(function(data){
+            console.log(req.params.id);
+            let numid = Number(req.params.id)
+            let content = data.toString('utf-8');
+            let array = JSON.parse(content)
+            let query = array.find(function(obj){
+                return obj.id === numid;
+            })
+            console.log(query);
+            console.log(req.body);
+            let dex = array.indexOf(query)
+            console.log('dex: ',dex);
+            array.splice(dex, 1, req.body);
+            console.log(array);
+            let storeRay = JSON.stringify(array)
+            fs.writeFileSync(here+'/data.json', storeRay, 'utf8', (err) => {
+                if (err) throw err;
+                console.log("data appended to file");
+            });
+            res.json(query)
+        });
+});
+
 router.delete('/myheroes/:id', function (req, res) {
     readFile_prom(here+'data.json')
         .then(function(data){
