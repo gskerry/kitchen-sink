@@ -83,10 +83,13 @@ router.put('/myheroes/:id', function (req, res) {
             console.log(array);
             let storeRay = JSON.stringify(array)
             fs.writeFileSync(here+'/data.json', storeRay, 'utf8', (err) => {
-                if (err) throw err;
-                console.log("data appended to file");
+                if (err) {
+                    throw err;
+                } else {
+                    console.log("data appended to file");
+                    res.json(query)
+                }
             });
-            res.json(query)
         });
 });
 
