@@ -9,7 +9,7 @@ import { testApi } from './testapi';
 const routes: Routes = [
     {
         path: '',
-        redirectTo: '/test',
+        redirectTo: '/dashboard',
         pathMatch: 'full'
     }, 
     {
