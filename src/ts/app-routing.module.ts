@@ -4,12 +4,17 @@ import { RouterModule, Routes } from '@angular/router'
 import { DashboardComponent }  from './dashboard.component';
 import { HeroesComponent } from './heroes.component';
 import { HeroDetailComponent } from './hero-detail.component';
+import { testApi } from './testapi';
 
 const routes: Routes = [
     {
         path: '',
         redirectTo: '/dashboard',
         pathMatch: 'full'
+    }, 
+    {
+        path: 'test',
+        component: testApi
     },
     {
         path: 'dashboard',
