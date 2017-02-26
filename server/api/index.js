@@ -2,6 +2,7 @@
 var router = require('express').Router();
 const Promise = require("bluebird");
 const path = require('path');
+const fs = require('fs');
 
 let readFile_prom = Promise.promisify(require("fs").readFile);
 let here = path.join(__dirname, './')
@@ -43,5 +44,48 @@ router.get('/myheroes/:id', function (req, res) {
         });
 
 });
+
+router.post('/myheroes', function (req, res) {
+    
+    readFile_prom(here+'data.json')
+        .then(function(data){
+            let newobj = {} 
+            // console.log(typeof data);
+            let content = data.toString('utf-8');
+            // console.log(typeof content);
+            let array = JSON.parse(content)
+            console.log(array);
+            console.log(typeof array);
+            let sortRay = array.sort(function(a,b){return a.id-b.id;})
+            console.log('sortRay: '+JSON.stringify(sortRay));
+            let oldid = sortRay[sortRay.length - 1].id
+            console.log(oldid);
+            let newid = oldid + 1;
+            console.log(newid);
+            console.log(req.body);
+            newobj.id = newid
+            newobj.name = req.body.name
+            console.log(newobj);
+            array.push(newobj);
+            console.log(array);
+            let storeRay = JSON.stringify(array)
+            fs.writeFileSync(here+'/data.json', storeRay, 'utf8', (err) => {
+                if (err) throw err;
+                console.log("data appended to file");
+            });
+            
+            // let query = array.find(function(obj){
+            //     console.log(typeof obj.id);
+            //     return obj.id === numid;
+            // })
+            // console.log(query);
+            // console.log(JSON.stringify(query)+' | '+typeof query);
+            res.json(newobj)
+            // res.send(msg[0].msg);
+            // res.send('hello world');
+        });
+
+});
+
 
 module.exports = router;
