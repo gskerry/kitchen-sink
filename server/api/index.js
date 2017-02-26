@@ -5,6 +5,7 @@ const path = require('path');
 const fs = require('fs');
 
 let readFile_prom = Promise.promisify(require("fs").readFile);
+let writeFile_prom = Promise.promisify(require("fs").writeFile);
 let here = path.join(__dirname, './')
 
 router.get('/myheroes', function (req, res) {
@@ -82,14 +83,20 @@ router.put('/myheroes/:id', function (req, res) {
             array.splice(dex, 1, req.body);
             console.log(array);
             let storeRay = JSON.stringify(array)
-            fs.writeFileSync(here+'/data.json', storeRay, 'utf8', (err) => {
-                if (err) {
-                    throw err;
-                } else {
+            writeFile_prom(here+'/data.json', storeRay, 'utf8')
+                .then((err) => {
+                    if (err) throw err;
                     console.log("data appended to file");
-                    res.json(query)
-                }
-            });
+                    res.json(query);
+                })
+            // fs.writeFileSync(here+'/data.json', storeRay, 'utf8', (err) => {
+            //     if (err) {
+            //         throw err;
+            //     } else {
+            //         console.log("data appended to file");
+            //         res.json(query)
+            //     }
+            // });
         });
 });
 
