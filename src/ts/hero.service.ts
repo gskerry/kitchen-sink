@@ -47,7 +47,7 @@ export class HeroService {
     }
     
     delete(id: number): Promise<void>{
-        const url =`${this.heroesUrl}/${id}`;
+        const url =`${this.myheroesUrl}/${id}`;
         return this.http
             .delete(url, {headers: this.headers})
             .toPromise()
