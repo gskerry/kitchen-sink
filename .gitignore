@@ -12,3 +12,4 @@ _temp
 _bin
 *.swp
 server/api/data.json
+server/api/spare.json
