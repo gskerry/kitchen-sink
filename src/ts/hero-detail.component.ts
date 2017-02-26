@@ -34,7 +34,7 @@ export class HeroDetailComponent implements OnInit {
     }
 
     goBack(): void {
-        this.location.back();
+        setTimeout(() => {this.location.back()}, 5000);
     }
     
     save(): void {
