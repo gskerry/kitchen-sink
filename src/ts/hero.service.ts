@@ -18,7 +18,7 @@ export class HeroService {
         return this.http.get(this.myheroesUrl)
             .toPromise() // execute rxjs promise-converter
             .then(response => response.json() as Hero[]) // native http resp
-            .catch(this.handleError);
+            .catch((err) => {this.handleError(err, 'getHeroes')});
     }
     
     getHero(id: number): Promise<Hero> {
@@ -26,7 +26,7 @@ export class HeroService {
         return this.http.get(url)
             .toPromise()
             .then(response => response.json() as Hero)
-            .catch(this.handleError)
+            .catch((err) => {this.handleError(err, 'getHero')});
     }
     
     update(hero: Hero): Promise<Hero> {
@@ -35,7 +35,7 @@ export class HeroService {
             .put(url, JSON.stringify(hero), {headers: this.headers})
             .toPromise()
             .then(() => hero)
-            .catch(this.handleError)
+            .catch((err) => {this.handleError(err, 'updatehero')});
     }
 
     create(name: string): Promise<Hero>{
@@ -43,7 +43,7 @@ export class HeroService {
             .post(this.myheroesUrl, JSON.stringify({name: name}), {headers: this.headers})
             .toPromise()
             .then(res => res.json())
-            .catch(this.handleError);
+            .catch((err) => {this.handleError(err, 'createhero')});
     }
     
     delete(id: number): Promise<void>{
@@ -52,11 +52,11 @@ export class HeroService {
             .delete(url, {headers: this.headers})
             .toPromise()
             .then(() => null)
-            .catch(this.handleError)
+            .catch((err) => {this.handleError(err, 'deletehero')});
     }
 
-    private handleError(error: any): Promise<any> {
-        console.error('An error occured', error);
+    private handleError(error: any, sender: string): Promise<void> {
+        console.error('An error occured: '+error+' from: '+sender);
         return Promise.reject(error.message || error);
     }
 
