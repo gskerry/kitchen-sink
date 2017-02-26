@@ -13,7 +13,11 @@ router.get('/myheroes', function (req, res) {
             let content = data.toString('utf-8');
             let array = JSON.parse(content)
             res.json(array)
-        });
+        })
+        .catch((err) => {
+            console.error(err.stack)
+            res.status(500).send('Something broke')
+        })
 });
 
 router.get('/myheroes/:id', function (req, res) {
