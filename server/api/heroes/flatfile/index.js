@@ -9,6 +9,9 @@ let writeFile_prom = Promise.promisify(require("fs").writeFile);
 let here = path.join(__dirname, './')
 
 router.get('/', function (req, res) {
+
+    console.log(req.params);
+    
     readFile_prom(here+'data.json') //, 'utf-8'
         .then(function(data){
             let content = data.toString('utf-8');
