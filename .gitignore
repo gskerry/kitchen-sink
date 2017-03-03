@@ -11,5 +11,7 @@ _test-output
 _temp
 _bin
 *.swp
+server/api/data.json
+server/api/spare.json
 server/api/heroes/flatfile/data.json
 server/api/heroes/flatfile/spare.json
