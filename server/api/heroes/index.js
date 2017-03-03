@@ -1,7 +1,7 @@
 'use strict';
 let router = require('express').Router();
 
-router.use('/heroes', require('./heroes'));
+router.use('/flatfile', require('./flatfile'));
 
 // error catching
 router.use(function (req, res) {
@@ -9,4 +9,3 @@ router.use(function (req, res) {
 });
 
 module.exports = router;
-
