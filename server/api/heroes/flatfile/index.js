@@ -8,7 +8,7 @@ let readFile_prom = Promise.promisify(require("fs").readFile);
 let writeFile_prom = Promise.promisify(require("fs").writeFile);
 let here = path.join(__dirname, './')
 
-router.get('/myheroes', function (req, res) {
+router.get('/', function (req, res) {
     readFile_prom(here+'data.json') //, 'utf-8'
         .then(function(data){
             let content = data.toString('utf-8');
@@ -21,7 +21,7 @@ router.get('/myheroes', function (req, res) {
         })
 });
 
-router.get('/myheroes/:id', function (req, res) {
+router.get('/:id', function (req, res) {
     readFile_prom(here+'data.json') //, 'utf-8'
         .then(function(data){
             console.log(req.params.id);
@@ -36,7 +36,7 @@ router.get('/myheroes/:id', function (req, res) {
         });
 });
 
-router.post('/myheroes', function (req, res) {
+router.post('/', function (req, res) {
     readFile_prom(here+'data.json')
         .then(function(data){
             let newobj = {} 
@@ -66,7 +66,7 @@ router.post('/myheroes', function (req, res) {
         });
 });
 
-router.put('/myheroes/:id', function (req, res) {
+router.put('/:id', function (req, res) {
     readFile_prom(here+'data.json')
         .then(function(data){
             console.log(req.params.id);
@@ -100,7 +100,7 @@ router.put('/myheroes/:id', function (req, res) {
         });
 });
 
-router.delete('/myheroes/:id', function (req, res) {
+router.delete('/:id', function (req, res) {
     readFile_prom(here+'data.json')
         .then(function(data){
             console.log(req.params.id);
