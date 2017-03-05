@@ -10,13 +10,29 @@ let here = path.join(__dirname, './')
 
 router.get('/', function (req, res) {
 
-    console.log(req.params);
-    
+    let query = req.query
+
+    console.log("query: ",query);
+    console.log("name: ",req.query.name);
+
     readFile_prom(here+'data.json') //, 'utf-8'
         .then(function(data){
             let content = data.toString('utf-8');
             let array = JSON.parse(content)
-            res.json(array)
+            // console.log(array);
+            let respray = [];
+            if(req.query.name){
+                console.log(req.query.name);    
+                let query = array.find(function(obj){
+                    return obj.name === req.query.name;
+                })
+                respray.push(query)
+                console.log(respray);    
+                res.json(respray)
+            } else {
+                res.json(array)
+            }
+            
         })
         .catch((err) => {
             console.error(err.stack)
