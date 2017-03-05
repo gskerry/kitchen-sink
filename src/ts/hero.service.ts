@@ -8,8 +8,8 @@ import { Hero } from './hero';
 @Injectable()
 export class HeroService {
     
-    private endpoint = 'api/heroes'; // (!) hardcoded to Angular's web-api 
-    // private endpoint = 'api/heroes/flatfile'; // refactor for express API 
+    // private endpoint = 'api/heroes'; // (!) hardcoded to Angular's web-api 
+    private endpoint = 'api/heroes/flatfile'; // refactor for express API 
     private headers = new Headers({'Content-Type':'application/json'})
 
     constructor(private http: Http){}
@@ -17,8 +17,8 @@ export class HeroService {
     getHeroes(): Promise<Hero[]> {
         return this.http.get(this.endpoint)
             .toPromise() // execute rxjs promise-converter
-            .then(response => response.json().data as Hero[]) // webapi http resp
-            // .then(response => response.json() as Hero[]) // express http resp
+            // .then(response => response.json().data as Hero[]) // webapi http resp
+            .then(response => response.json() as Hero[]) // express http resp
             .catch((err) => {this.handleError(err, 'getHeroes')});
     }
     
@@ -26,8 +26,8 @@ export class HeroService {
         const url =`${this.endpoint}/${id}`;
         return this.http.get(url)
             .toPromise()
-            .then(response => response.json().data as Hero)
-            // .then(response => response.json() as Hero)
+            // .then(response => response.json().data as Hero)
+            .then(response => response.json() as Hero)
             .catch((err) => {this.handleError(err, 'getHero')});
     }
     
@@ -44,8 +44,8 @@ export class HeroService {
         return this.http
             .post(this.endpoint, JSON.stringify({name: name}), {headers: this.headers})
             .toPromise()
-            .then(res => res.json().data)
-            // .then(res => res.json())
+            // .then(res => res.json().data)
+            .then(res => res.json())
             .catch((err) => {this.handleError(err, 'createhero')});
     }
     
