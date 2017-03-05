@@ -1,11 +1,12 @@
 # Kitchen Sink
+**start server**
 ```javascript
-    if (isAwesome){
-        return true
-    }
+    npm start
 ```
+**access on port 1500**
+http://127.0.0.1:1500
 
-## Libraries & Citations
+### Libraries & Citations
 https://angular.io/docs/ts/latest/guide/setup.html
 https://angular.io/docs/ts/latest/tutorial/
 
