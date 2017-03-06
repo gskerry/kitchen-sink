@@ -23,8 +23,10 @@ router.get('/', function (req, res) {
             let respray = [];
             if(req.query.name){
                 console.log(req.query.name);    
+                let pattern = new RegExp(req.query.name);
                 let query = array.find(function(obj){
-                    return obj.name === req.query.name;
+                    // return obj.name === req.query.name;
+                    return pattern.exec(obj.name);
                 })
                 if(query){ 
                     respray.push(query)
