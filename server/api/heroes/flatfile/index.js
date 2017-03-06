@@ -26,9 +26,15 @@ router.get('/', function (req, res) {
                 let query = array.find(function(obj){
                     return obj.name === req.query.name;
                 })
-                respray.push(query)
-                console.log(respray);    
-                res.json(respray)
+                if(query){ 
+                    respray.push(query)
+                    // console.log(respray);    
+                    res.json(respray)
+                } else {
+                    respray.push({"name":"(!) No Matches"})
+                    // console.log(respray);    
+                    res.json(respray)
+                }
             } else {
                 res.json(array)
             }
