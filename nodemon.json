@@ -1,5 +1,8 @@
 
 {
       "verbose": true,
-        "ignore": ["server/api/heroes/flatfile/data.json"]
+        "ignore": [
+            "server/api/heroes/flatfile/data.json",
+            "src/*"
+        ]
 }
