@@ -1,9 +1,5 @@
 {
   "port":1500,
-  "server": {
-    "baseDir": "src",
-    "routes": {
-      "/node_modules": "node_modules"
-    }
-  }
+  "proxy": "http://127.0.0.1:1800",
+  "files": ["src/**/*.html", "src/**/*.js", "src/**/*.css"] 
 }
