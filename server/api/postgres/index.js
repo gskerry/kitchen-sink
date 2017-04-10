@@ -1,9 +1,12 @@
-'use strict'
+"use strict";
 let router = require('express').Router();
 
-router.get('/', function (req, res) {
-    console.log(req);
-    res.send("helloworld.");
+router.use('/sample', require('./sample'));
+router.use('/weather', require('./weather'));
+
+// error catching
+router.use(function (req, res) {
+    res.status(404).end();
 });
 
 module.exports = router;
