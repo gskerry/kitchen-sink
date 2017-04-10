@@ -45,4 +45,15 @@ router.get('/:id', function (req, res) {
         })
 });
 
+router.post('/', function (req, res) {
+    console.log("req.body: ",req.body);    
+    Table.create(req.body)
+        .then(function (newRecord) {
+            res.status(200).json(newRecord);
+        })
+        .catch(function (error){
+            res.status(500).json(error);
+        }); 
+});
+
 module.exports = router;
