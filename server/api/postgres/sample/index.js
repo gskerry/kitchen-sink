@@ -56,4 +56,26 @@ router.post('/', function (req, res) {
         }); 
 });
 
+router.put('/:id', function (req, res) {
+    console.log("req.body: ",req.body);    
+    Table.update(req.body, { where: { dex: req.params.id } })
+        .then(function (updatedRecord) {
+            res.status(200).json(updatedRecord);
+        })
+        .catch(function (error){
+            res.status(500).json(error);
+        }); 
+});
+
+router.delete('/:id', function (req, res) {
+    console.log("req.body: ",req.body);    
+    Table.destroy({ where: { dex: req.params.id } })
+        .then(function (deletedRecord) {
+            res.status(200).json(deletedRecord);
+        })
+        .catch(function (error){
+            res.status(500).json(error);
+        }); 
+});
+
 module.exports = router;
