@@ -1,8 +1,8 @@
-'use strict';
+"use strict";
 let router = require('express').Router();
 
-router.use('/heroes', require('./heroes'));
-router.use('/postgres', require('./postgres'));
+router.use('/sample', require('./sample'));
+router.use('/weather', require('./weather'));
 
 // error catching
 router.use(function (req, res) {
@@ -10,4 +10,3 @@ router.use(function (req, res) {
 });
 
 module.exports = router;
-
